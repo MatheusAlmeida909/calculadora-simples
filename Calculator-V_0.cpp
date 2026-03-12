@@ -77,13 +77,6 @@ int main()
 
             if (num2 < 0)
             {
-                /*
-                for (size_t i = 1; i < num2 * -1; i++)
-                {
-                    num1 = (1 / num1) * (1 / aux);
-                }
-                */
-
                 for (int i = 1; i < num2 * -1; i++)
                 {
                     num1 = num1 / aux;
