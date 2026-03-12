@@ -12,46 +12,46 @@ double getNumber()
 
 int main()
 {
-    const int last_operacao{ 5 };
-    const int first_operacao{ 1 };
+    constexpr int last_operation{ 5 };
+    constexpr int first_operation{ 1 };
 
-    int operacao;
+    int operation;
 
     do
     {
         std::cout << "Choose an operation\n ~ 1 = add\n ~ 2 = subtract\n ~ 3 = multiply\n ~ 4 = divide\n ~ 5 = power" << std::endl;
-        std::cin >> operacao;
+        std::cin >> operation;
 
-        if (operacao > last_operacao || operacao < first_operacao)
+        if (operation > last_operation || operation < first_operation)
         {
             std::cout << "This number doesn't correspond to a valid operation" << std::endl;
         }
 
-    } while (operacao > last_operacao || operacao < first_operacao);
+    } while (operation > last_operation || operation < first_operation);
 
     double num1{ getNumber() };
     double num2{ getNumber() };
     double result{ 0 };
 
-    switch (operacao)
+    switch (operation)
     {
         case 1:
-            
+        {
             result = num1 + num2;
             break;
-        
+        }
         case 2:
-
+        {
             result = num1 - num2;
             break;
-        
+        }
         case 3:
             
             result = num1 * num2;
             break;
         
         case 4:
-            
+        {
             if (num2 != 0)
             {
                 result = num1 / num2;
@@ -69,11 +69,12 @@ int main()
             }
 
             break;
+        }
 
         case 5:
+        {
+            const double aux{ num1 };
 
-            double aux{ num1 };
-            
             if (num2 < 0)
             {
                 /*
@@ -82,18 +83,18 @@ int main()
                     num1 = (1 / num1) * (1 / aux);
                 }
                 */
-                
-                for (size_t i = 1; i < num2 * -1; i++)
+
+                for (int i = 1; i < num2 * -1; i++)
                 {
                     num1 = num1 / aux;
                 }
 
                 result = num1;
-                
+
             }
             else
             {
-                for (size_t i = 1; i < num2; i++)
+                for (int i = 1; i < num2; i++)
                 {
                     num1 = num1 * aux;
                 }
@@ -102,7 +103,15 @@ int main()
             }
 
             break;
+        }
+
+        default:
+        {
+            std::cout << "Type only integer numbers from 1 to 5";
+            break;
+        }
     }
+
     std::cout << "The result is: " << result << std::endl;
 
     return 0;
